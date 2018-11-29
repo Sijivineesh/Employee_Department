@@ -1,0 +1,57 @@
+@model EmployeeDepartment.Models.DepartmentModels
+@{
+    ViewBag.Title = "DepartmentReg";
+   
+}
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">        
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Department Registration</h3>
+            </div>
+            <br />            
+           @using (Html.BeginForm("DepartmentReg", "Main", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+            @Html.ValidationSummary(true)
+                <form role="form">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <div class="row">
+
+                                <div class="col-xs-4">
+                                    <label for="DepartmentName">First Name</label>
+                                    @Html.TextBoxFor(m => m.DepartmentName, new { @class = "form-control", @required = "required", @placeholder = "Department Name" })
+                                    @Html.ValidationMessageFor(model => model.DepartmentName, null, new { style = "color:red;" })
+                                </div>
+                                 <div class="col-xs-4">
+                                    <label for="Description">Description</label>
+                                    @Html.TextBoxFor(m => m.Description, new { @class = "form-control", @required = "required", @placeholder = "Description" })
+                                    @Html.ValidationMessageFor(model => model.Description, null, new { style = "color:red;" })
+                                </div>
+                                 <div class="col-xs-4">
+                                    <label for="ContactNumber">Contact Number</label>
+                                    @Html.TextBoxFor(m => m.Contact, new { @class = "form-control", @required = "required", @placeholder = "Contact Number" })
+                                    @Html.ValidationMessageFor(model => model.Contact, null, new { style = "color:red;" })
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="box-footer">
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            &nbsp; &nbsp;&nbsp;
+                            <button type="submit" class="btn btn-primary">Cancel</button>
+
+                        </div>
+                    </div>
+                            </form>
+            }
+
+            
+        </div>
+        
+    </div>
+    
+</section>

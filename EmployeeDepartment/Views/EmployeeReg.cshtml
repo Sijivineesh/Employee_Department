@@ -1,0 +1,134 @@
+@model EmployeeDepartment.Models.EmployeeModels
+@{
+    ViewBag.Title = "EmployeeReg";
+    
+}
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">        
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Employee Registration</h3>
+            </div>
+            <br />            
+           @using (Html.BeginForm("EmployeeReg", "Main", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+            @Html.ValidationSummary(true)
+                <form role="form">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <div class="row">
+
+                                <div class="col-xs-4">
+                                    <label for="FirstName">First Name</label>
+                                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @required = "required", @placeholder = "First Name" })
+                                    @Html.ValidationMessageFor(model => model.FirstName, null, new { style = "color:red;" })
+                                </div>
+                                 <div class="col-xs-4">
+                                    <label for="LastName">Last Name</label>
+                                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @required = "required", @placeholder = "Last Name" })
+                                    @Html.ValidationMessageFor(model => model.LastName, null, new { style = "color:red;" })
+                                </div>
+                                 <div class="col-xs-4">
+                                    <label for="ContactNumber">Contact Number</label>
+                                    @Html.TextBoxFor(m => m.Contact, new { @class = "form-control", @required = "required", @placeholder = "Contact Number" })
+                                    @Html.ValidationMessageFor(model => model.Contact, null, new { style = "color:red;" })
+                                </div>
+
+                            </div>
+                             <br />
+
+                            <div class="row">
+                                <div class="col-xs-8">
+                                    <label> Address</label>
+                                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @required = "required", @placeholder = "Address" })
+                                    @Html.ValidationMessageFor(model => model.Address, null, new { style = "color:red;" })
+                                </div>
+                                 <div class="col-xs-4">
+                                    @Html.RadioButtonFor(model=> model.Gender, "Male", new { @checked = true} )
+                                    @Html.RadioButtonFor(model=> model.Gender, "Female", new { @checked = false} )
+                                    @Html.ValidationMessageFor(model => model.Gender, null, new { style = "color:red;" })
+                                </div>
+                                
+                                
+                            </div>
+
+                            <br />
+                             <div class="row">
+                               
+                           
+                                <div class="col-xs-4">
+                                    <label for="EmailID">Login EmailID</label>
+                                    @Html.TextBoxFor(m => m.EmailID, new { @class = "form-control", @required = "required", @placeholder = "Email" })
+                                    @Html.ValidationMessageFor(model => model.EmailID, null, new { style = "color:red;" })
+                                </div>
+                                <div class="col-xs-4">
+                                    <label for="Password">Login Pasword</label>
+                                    @Html.PasswordFor(model => model.Password, new { @class = "form-control", @required = "required", @placeholder = "Password" })
+                                    @Html.ValidationMessageFor(model => model.Password, null, new { style = "color:red;" })
+                                </div>
+                                <div class="col-xs-4">
+                                    <label for="DOB">Date of Birth</label>
+                                    @Html.TextBoxFor(model => model.DOB, new {@id="datepicker1", @class = "form-control", @required = "required", @placeholder = "Date of Birth" })
+                                    @Html.ValidationMessageFor(model => model.DOB, null, new { style = "color:red;" })
+                                </div>
+                             </div>>
+                                 <br />
+
+                            <div class="row">                               
+
+                                <div class="col-xs-4">
+                                    <label for="Department">Department</label>
+                                   @Html.DropDownListFor(m => m.Department,
+                                    new SelectList(Enumerable.Empty<SelectListItem>(), "DepartmentID", "DepartmentName"),
+                                    "Select Department",
+                                    new { @class = "form-control", @required = "required" })
+                                            @Html.ValidationMessageFor(model => model.Department, null, new { style = "color:red;" })
+                                </div>
+                                <div class="col-xs-4">
+                                    <label for="Designation">Designation</label>
+                                    @Html.TextBoxFor(m => m.Designation, new { @class = "form-control", @required = "required", @placeholder = "Designation" })
+                                    @Html.ValidationMessageFor(model => model.Designation, null, new { style = "color:red;" })
+                                </div>
+                                <div class="col-xs-4">
+                                    @Html.RadioButtonFor(model=> model.Status, "Active", new { @checked = true} )
+                                    @Html.RadioButtonFor(model=> model.Status, "Inactive", new { @checked = false} )
+                                    @Html.ValidationMessageFor(model => model.Status, null, new { style = "color:red;" })
+                                </div>
+                                
+                            </div>
+                                <br />
+                           <div class="row">
+                                <div class="col-xs-2">
+                                    <label for="Image">Browse Image</label>
+                                    <input type="file" name="ImagePath" id="Upload">
+                                </div>
+                                <div class="col-xs-6">
+                                    <label for="Image"> Image</label>
+                                    @Html.TextBoxFor(m => m.Image, new { @class = "form-control", @required = "required", @placeholder = "Image" })
+                                    @Html.ValidationMessageFor(model => model.Image, null, new { style = "color:red;" })
+                                </div>
+                                </div>          
+                           </div>
+                        </div>
+                    
+
+                         <div class="box-footer">
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            &nbsp; &nbsp;&nbsp;
+                            <button type="submit" class="btn btn-primary">Cancel</button>
+
+                        </div>
+
+                    </div>
+                </form>
+            }
+
+            
+        </div>
+        
+    </div>
+    
+</section>
