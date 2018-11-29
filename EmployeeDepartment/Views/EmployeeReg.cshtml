@@ -100,19 +100,10 @@
                             </div>
                                 <br />
                            <div class="row">
-                                <div class="col-xs-2">
-                                    <label for="Image">Browse Image</label>
-                                    <input type="file" name="ImagePath" id="Upload">
-                                </div>
-                                <div class="col-xs-6">
-                                    <label for="Image"> Image</label>
-                                    @Html.TextBoxFor(m => m.Image, new { @class = "form-control", @required = "required", @placeholder = "Image" })
-                                    @Html.ValidationMessageFor(model => model.Image, null, new { style = "color:red;" })
-                                </div>
+                                
                                 </div>          
                            </div>
-                        </div>
-                    
+                        </div>                  
 
                          <div class="box-footer">
 
