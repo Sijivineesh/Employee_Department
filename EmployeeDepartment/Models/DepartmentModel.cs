@@ -23,7 +23,7 @@ namespace EmployeeDepartment.Models.DepartmentModel
         {           
         }
 
-        public int ID { get; set; }
+        public int Pk_ID { get; set; }
 
         [Required]
 

@@ -22,7 +22,7 @@ namespace EmployeeDepartment.Models.EmployeeModel
         {
 
         }
-        public int ID { get; set; }
+        public int Pk_ID { get; set; }
 
         [Required]
 
@@ -51,7 +51,10 @@ namespace EmployeeDepartment.Models.EmployeeModel
         [Required]
         public string JoinedDate{ get; set; }
         [Required]
-        public string DepartmentID{ get; set; }
+        public IEnumerable<SelectListItem> DepartmentList { get; set; }
+    [DisplayName("Department")] 
+    public int DepartmentID { get; set; }
+
 
         
     }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>  
+    <title>Employee Department Management System| Dashboard</title>   
+</head>
+
+<body class="hold-transition skin-blue fixed sidebar-mini">  
+    <div class="wrapper">
+        <header class="main-header">           
+                <span class="logo-lg"><b>EveAdmin</b></span>         
+        
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>                   
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">  
+                           <img src=@Url.Content("~/Images/Evlyn.jpg") class="user-image" alt=" Image">
+                                <span class="hidden-xs">ADMIN </span>
+                       
+                    </ul>
+                </div>
+            </nav>
+        </header>       
+        <aside class="main-sidebar">           
+            <section class="sidebar">   
+                <ul class="sidebar-menu">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li class="treeview  active">
+                        <a href="#">
+                            <i class="fa fa-user-secret"></i> <span>Masters</span>
+                            <span class="label label-primary pull-right">4</span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("DeptSearch", "Main")"><i class="fa fa-circle-o"></i>Department </a></li>
+                            <li><a href="@Url.Action("EmpSearch", "Main")"><i class="fa fa-circle-o"></i> </a>Employee</li>
+                            
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </section>           
+        </aside>
+       
+        <div class="content-wrapper">
+          
+            <div>
+                @RenderBody()
+            </div>
+        </div><!-- /.content-wrapper -->
+        <footer class="main-footer">
+           
+          <center>  <strong>Copyright &copy; 2014-2015 <a href="https://www.infosys.com/" target="_blank">Infosys</a>.</strong> All rights reserved.</center>
+        </footer>       
+  
+</body>
+</html>

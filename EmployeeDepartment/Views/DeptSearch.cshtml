@@ -1,0 +1,101 @@
+@model IEnumerable<EmployeeDepartment.Models.Department>
+
+@{
+    ViewBag.Title = "DeptSearch";    
+    var grid = new WebGrid(ViewBag.list);
+ Layout = "~/Shared/Fixed.cshtml";
+}
+
+<h2>Employee Details</h2>
+@using (Html.BeginForm("DeptSearch", "Main", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div class="box-body">
+        <div class="row">
+            <div class="form-group">
+
+                <div class="pull-left">
+                            @Html.ActionLink("Register New", "DepartmentReg")
+                </div>
+                <div class="col-md-3">
+                            <label>Search By Name</label>
+                            @Html.TextBox("Name", null, new { @class = "form-control valid", @placeholder = "Enter Name", @data_val = "true", @data_val_required = "Name is required", @required = "required" })
+                            @Html.ValidationSummary()
+                </div>                
+
+                <div class="col-md-3" id="btnSearch" style="display:none">
+                     <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" type="submit">Search</button>
+                        </span>
+                    </div>
+                </div><!-- /.col -->
+            </div>
+        </div>
+    </div>
+    
+        <section class="content">
+            <div id="grid" class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Employee Details</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                    </div>
+                    <div>
+
+                        @grid.GetHtml(tableStyle: "table", htmlAttributes: new { id = "DataTable" }, headerStyle: "header", alternatingRowStyle: "alt",
+columns: grid.Columns(
+grid.Column("DeptName", "Department Name", canSort: true, style: "text-align-center"),
+grid.Column("Description", "Description", canSort: true, style: "text-align-center"),
+/*grid.Column(header: "Action",format:@<text> 
+    <a href="#" Pk_ID="Pk_ID" class="edit">Edit</a>
+    <a href="#" Pk_ID="Pk_ID" class="delete">Delete</a></text>)})*/
+grid.Column(format: (item) => Html.ActionLink("Edit", "DeptEdit", new { Pk_ID = item.Pk_ID }))
+grid.Column(format: (item) => Html.ActionLink("Delete", "DeptDelete", new { Pk_ID = item.Pk_ID }))
+))
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+}
+@{
+    var message = TempData["notice"] ?? string.Empty;
+}
+<!-- <script type="text/javascript">
+$(".delete").live("click", function () {
+ var str = $(this).attr("Pk_ID").split("_");
+ id = str[1];
+ 
+ var flag = confirm('Are you sure to delete ??');
+ if (id != "" && flag) {
+ $.ajax({
+ type: "GET",
+ contentType: "application/json; charset=utf-8",
+ url: '@Url.Action("DeleteEmployee", "Main")',
+ data: { "Pk_ID": id },
+ dataType: "json",
+ beforeSend: function () { },
+ success: function (data) {
+ if (data.result == true) {
+ $("#Update_" + id).parents("tr").remove();
+ }
+ else {
+ alert('There is some error');
+ }
+ }
+ });
+ }
+});
+<script>
+
+ -->
+
+
+
+
+
+
+
+
